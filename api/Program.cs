@@ -1,4 +1,5 @@
 using api.Data;
+using api.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,15 +22,19 @@ builder.Services.AddCors(options =>
             .WithOrigins("https://localhost:3000", "https://localhost:3001");
     });
 });
+builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors("CorsPolicy");
 
