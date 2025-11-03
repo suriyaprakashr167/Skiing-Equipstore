@@ -11,9 +11,9 @@ export default function ServerError() {
         bgcolor: "background.paper",
         color: "error.main",
         maxWidth: "100%",
-        overflowX: "auto",       // 👈 enables horizontal scroll if still needed
-        wordBreak: "break-word", // 👈 breaks long lines (e.g. file paths)
-        whiteSpace: "pre-wrap",  // 👈 keeps original line breaks
+        overflowX: "auto",
+        wordBreak: "break-word",
+        whiteSpace: "pre-wrap",
       }}
     >
       {state?.error ? (
@@ -33,8 +33,8 @@ export default function ServerError() {
             variant="body1"
             sx={{
               px: 4,
-              whiteSpace: "pre-wrap",  // 👈 keeps multi-line stack trace
-              wordBreak: "break-word", // 👈 wraps long words instead of overflowing
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
             }}
           >
             {state.error.detail}
