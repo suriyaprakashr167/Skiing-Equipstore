@@ -1,5 +1,7 @@
 using api.Data;
+using api.Entities;
 using api.Middleware;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +26,13 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddTransient<ExceptionMiddleware>();
+builder.Services.AddIdentityApiEndpoints<User>(opt =>
+{
+    opt.User.RequireUniqueEmail = true;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<StoreContext>();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -41,9 +50,13 @@ app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGroup("api").MapIdentityApi<User>();  // api/login
 
 Dbinitializer.InitDb(app);
 
