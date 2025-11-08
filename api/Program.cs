@@ -1,6 +1,7 @@
 using api.Data;
 using api.Entities;
 using api.Middleware;
+using api.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,7 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddTransient<ExceptionMiddleware>();
+builder.Services.AddScoped<PaymentsService>();
 builder.Services.AddIdentityApiEndpoints<User>(opt =>
 {
     opt.User.RequireUniqueEmail = true;
