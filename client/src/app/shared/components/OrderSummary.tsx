@@ -3,6 +3,7 @@ import { currencyFormat } from "../../../lib/util";
 import { Link, useLocation } from "react-router-dom";
 import { useBasket } from "../../../lib/hooks/useBasket";
 
+
 export default function OrderSummary() {
     const {subtotal, deliveryFee} = useBasket();
     const location = useLocation();
@@ -14,7 +15,7 @@ export default function OrderSummary() {
                 <Typography variant="h6" component="p" fontWeight="bold">
                     Order summary
                 </Typography>
-                <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+                <Typography variant="body2" sx={{fontStyle: 'italic'}}>
                     Orders over $100 qualify for free delivery!
                 </Typography>
                 <Box mt={2}>
@@ -48,16 +49,16 @@ export default function OrderSummary() {
 
                 <Box mt={2}>
                     {!location.pathname.includes('checkout') &&
-                        <Button
-                            component={Link}
-                            to='/checkout'
-                            variant="contained"
-                            color="primary"
-                            fullWidth
-                            sx={{ mb: 1 }}
-                        >
-                            Checkout
-                        </Button>}
+                    <Button
+                        component={Link}
+                        to='/checkout'
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        sx={{ mb: 1 }}
+                    >
+                        Checkout
+                    </Button>}
                     <Button
                         component={Link}
                         to='/catalog'
