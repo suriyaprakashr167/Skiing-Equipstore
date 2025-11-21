@@ -105,7 +105,7 @@ public class OrdersController(StoreContext context) : BaseApiController
                 {
                     ProductId = item.Product.Id,
                     PictureUrl = item.Product.PictureUrl,
-                    Name = item.Product.Name
+                    Name = item.Product.name
                 },
                 Price = item.Product.Price,
                 Quantity = item.Quantity

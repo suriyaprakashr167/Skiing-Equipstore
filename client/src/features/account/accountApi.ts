@@ -17,7 +17,7 @@ export const accountApi = createApi({
                     url: 'login?useCookies=true',
                     method: 'POST',
                     body: creds,
-                    credentials: 'include'
+                    // credentials: 'include'
                 }
             },
             async  onQueryStarted(_, {dispatch, queryFulfilled}) {

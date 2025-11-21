@@ -5,4 +5,5 @@ export type ProductParams ={
     brands: string[];
     pageNumber: number;
     pageSize: number;
+    all?: boolean;
 }

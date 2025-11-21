@@ -12,7 +12,7 @@ public static class ProductExtensions
         {
             "priceAsc" => query.OrderBy(x => x.Price),
             "priceDesc" => query.OrderByDescending(x => x.Price),
-            _ => query.OrderBy(x => x.Name)
+            _ => query.OrderBy(x => x.name)
         };
 
         return query;
@@ -24,7 +24,7 @@ public static class ProductExtensions
             return query;
 
         var lowerCaseSearchTerm = searchTerm.Trim().ToLower();
-        return query.Where(x => x.Name.ToLower().Contains(lowerCaseSearchTerm));
+        return query.Where(x => x.name.ToLower().Contains(lowerCaseSearchTerm));
     }
 
     public static IQueryable<Product> Filter(this IQueryable<Product> query,

@@ -6,17 +6,22 @@ import { type ChangeEvent, useEffect, useState } from "react";
 
 export default function ProductDetails() {
   const { id } = useParams();
+
   const [removeBasketItem] = useRemoveBasketItemMutation();
   const [addBasketItem] = useAddBasketItemMutation();
-  const {data: basket} = useFetchBasketQuery();
-  const item = basket?.items.find(x => x.productId === +id!);
-  const [quantity, setQuantity] = useState(0); 
+  const { data: basket } = useFetchBasketQuery();
+  const [quantity, setQuantity] = useState(0);
+
+  const productId = Number(id);
+  const { data: product, isLoading } = useFetchProductDetailsQuery(productId);
+
+  const item = basket?.items.find(x => x.productId === productId);
 
   useEffect(() => {
     if (item) setQuantity(item.quantity);
   }, [item]);
 
-  const {data: product, isLoading} = useFetchProductDetailsQuery(id ? +id : 0)
+  if (Number.isNaN(productId)) return <div>Invalid product id</div>;
 
   if (!product || isLoading) return <div>Loading...</div>
 
