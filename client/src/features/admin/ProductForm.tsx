@@ -22,6 +22,7 @@ type Props = {
 export default function ProductForm({setEditMode, product, refetch, setSelectedProduct}: Props) {
     const {control, handleSubmit, watch, reset, setError, formState: {isSubmitting}} = useForm<CreateProductSchema>({
         mode: 'onTouched',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         resolver: zodResolver(createProductSchema) as any,
     })
     const watchFile = watch('file') as (File & { preview: string }) | undefined;

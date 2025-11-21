@@ -10,11 +10,18 @@ export default function ContactPage() {
 
   return (
     <>
-    <Typography variant="h2">
-      Contact Page
-    </Typography>
+    <Typography variant="h4">
+  Contact Page
+</Typography>
+<Typography variant="body2">
+  Name: Suriya Prakash
+  <br/>
+  Email: suriyaprakashr167@gmail.com
+</Typography>
+<br/>
+
     <Typography variant="body1">
-      The data is: {data}
+      
     </Typography>
     <ButtonGroup>
          <Button onClick={() => dispatch(decrement(1))} color="error">Decrement</Button>
