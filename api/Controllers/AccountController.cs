@@ -46,9 +46,9 @@ public class AccountController(SignInManager<User> signInManager) : BaseApiContr
 
         return Ok(new
         {
-            user.Email,
-            user.UserName,
-            Roles = roles
+            email = user.Email,
+            userName = user.UserName,
+            roles = roles
         });
     }
 

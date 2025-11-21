@@ -17,7 +17,7 @@ public static class BasketExtensions
             Items = basket.Items.Select(x => new BasketItemDto
             {
                 ProductId = x.ProductId,
-                Name = x.Product.Name,
+                Name = x.Product.name,
                 Price = x.Product.Price,
                 Brand = x.Product.Brand,
                 Type = x.Product.Type,
